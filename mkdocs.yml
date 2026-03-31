@@ -1,0 +1,26 @@
+site_name: Kraftlin
+site_url: https://kraftlin.github.io/
+repo_url: https://github.com/kraftlin/kraftlin
+repo_name: kraftlin/kraftlin
+docs_dir: .
+site_dir: ../site
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - content.tabs.link
+
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - Home: index.md
+  - Config: config.md
+  - Command: command.md
+  - Message: message.md
+  - KDoc: kdoc/index.html
