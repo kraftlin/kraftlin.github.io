@@ -962,6 +962,8 @@
 </tr>
 </tbody>
 </table>
+<p>Brigadier is not pulled in transitively: Paper and Velocity both ship their own copy, and the library compiles against
+whichever one the platform provides. When using <code>kraftlin-command-core</code> on its own, add <code>com.mojang:brigadier</code> yourself.</p>
 <h2 id="getting-started">Getting Started</h2>
 <div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kraftlinCommand</span><span class="p">(</span><span class="s">&quot;demo&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">requiresPermission</span><span class="p">(</span><span class="s">&quot;demo.use&quot;</span><span class="p">)</span>
