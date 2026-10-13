@@ -521,6 +521,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#invalid-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invalid Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#custom-types" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -863,6 +874,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#invalid-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invalid Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#custom-types" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1082,11 +1104,23 @@
 </ul>
 <h3 id="built-in-complex-types">Built-in Complex Types</h3>
 <ul>
-<li><code>UUID</code> - Stored as string</li>
-<li><code>Enum&lt;T&gt;</code> - Stored as lowercase name (supports both <code>UPPER_CASE</code> and <code>kebab-case</code>)</li>
+<li><code>UUID</code> - Stored as string. Anything <code>UUID.fromString</code> accepts is read, including abbreviated forms such as <code>0-0-0-0-1</code></li>
+<li><code>Enum&lt;T&gt;</code> - Stored as lowercase name; read case-insensitively, ignoring surrounding whitespace and treating <code>-</code> as <code>_</code>.
+  Works for enum entries declared in <code>UPPER_CASE</code>, <code>PascalCase</code> or <code>kebab-case</code>; in the file <code>DARK_OAK</code>, <code>dark_oak</code> and
+  <code>dark-oak</code> all match <code>DARK_OAK</code> (<code>DarkOak</code> does not)</li>
 <li><code>List&lt;T&gt;</code> - For primitives, enums, UUIDs, and custom types</li>
-<li><code>Map&lt;String, T&gt;</code> - String-keyed maps with typed values</li>
+<li><code>Map&lt;String, String&gt;</code>, or <code>Map&lt;String, T&gt;</code> with <code>serialize</code>/<code>deserialize</code></li>
 </ul>
+<h3 id="invalid-values">Invalid Values</h3>
+<p>Reading a value never throws because of what a server admin wrote into the file. A value that cannot be read logs a
+warning and falls back to the default; in lists the element is skipped, and in maps the entry is skipped, while the rest
+is kept. A key that is present without a value (<code>items:</code>) reads as an empty list or map; scalars fall back to their
+default. Warnings go to the logger passed to <code>wrapConfig</code>/<code>wrapPluginConfig</code> (default <code>io.github.kraftlin.config</code>; pass
+<code>logger</code> to use your plugin's).</p>
+<p>Loading is different: creating the config, <code>reloadConfig()</code>, <code>saveDefaults()</code> and <code>save()</code> throw <code>ConfigException</code> if
+the file is not valid YAML or UTF-8, contains an alias that includes itself, or cannot be read or written. After a
+failed reload the previous values stay active.</p>
+<p>Values read as strings are returned exactly as typed: <code>version: 1.10</code> reads as <code>"1.10"</code> and <code>code: 007</code> as <code>"007"</code>.</p>
 <h3 id="custom-types">Custom Types</h3>
 <p>Use <code>serialize</code> and <code>deserialize</code> functions for custom types:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">customValue</span><span class="p">:</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span>
@@ -1096,29 +1130,68 @@
 <span class="w">    </span><span class="n">deserialize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 <span class="p">)</span>
 </code></pre></div>
-<p>Works with lists too:</p>
+<p>Works with lists too. Give the lambda parameters explicit types there, so the list overload can be chosen:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">dates</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">LocalDateTime</span><span class="o">&gt;</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span>
 <span class="w">    </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;dates&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">now</span><span class="p">()),</span>
-<span class="w">    </span><span class="n">serialize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">toString</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="n">deserialize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">serialize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">date</span><span class="p">:</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">date</span><span class="p">.</span><span class="na">toString</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="n">deserialize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 <span class="p">)</span>
 </code></pre></div>
+<p>If <code>deserialize</code> throws, a warning is logged and the default is used (list elements and map entries are skipped).</p>
 <h3 id="paper-specific-types">Paper-Specific Types</h3>
-<p>Available in <code>kraftlin-config-paper</code>:</p>
+<p>Available in <code>kraftlin-config-paper</code>: material lists, read as a <code>MaterialSet</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">BukkitConfig</span><span class="p">(</span><span class="n">plugin</span><span class="p">:</span><span class="w"> </span><span class="n">Plugin</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AbstractBukkitConfig</span><span class="p">(</span><span class="n">wrapConfig</span><span class="p">(</span><span class="n">plugin</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Materials</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">breakable</span><span class="p">:</span><span class="w"> </span><span class="n">MaterialSet</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span>
+<span class="w">        </span><span class="s">&quot;breakable&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">listOf</span><span class="p">(</span><span class="n">Material</span><span class="p">.</span><span class="na">STONE</span><span class="p">,</span><span class="w"> </span><span class="n">Material</span><span class="p">.</span><span class="na">DIRT</span><span class="p">),</span>
+<span class="w">        </span><span class="s">&quot;Blocks that may be broken&quot;</span>
+<span class="w">    </span><span class="p">)</span>
+
 <span class="w">    </span><span class="c1">// Materials and tags</span>
-<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">materials</span><span class="p">:</span><span class="w"> </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Material</span><span class="o">&gt;</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;blocks&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="n">listOf</span><span class="p">(</span><span class="n">Material</span><span class="p">.</span><span class="na">STONE</span><span class="p">,</span><span class="w"> </span><span class="n">Tag</span><span class="p">.</span><span class="na">SHULKER_BOXES</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">diggable</span><span class="p">:</span><span class="w"> </span><span class="n">MaterialSet</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span>
+<span class="w">        </span><span class="s">&quot;diggable&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">MaterialSet</span><span class="p">(</span><span class="n">listOf</span><span class="p">(</span><span class="n">Material</span><span class="p">.</span><span class="na">GRAVEL</span><span class="p">),</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="n">Tag</span><span class="p">.</span><span class="na">SAND</span><span class="p">)),</span>
+<span class="w">        </span><span class="s">&quot;Blocks the pet may dig&quot;</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Material sets support:
-- Individual materials: <code>STONE</code>, <code>DIAMOND_ORE</code>
-- Material tags: <code>#shulker_boxes</code>, <code>#wool</code>
-- Both with or without <code>minecraft:</code> prefix
-- Returns <code>EnumSet&lt;Material&gt;</code> for performance</p>
+<p>Any collection of materials works as default, <code>listOf(...)</code> being the common case. Use <code>MaterialSet(materials, tags)</code>
+for a default with tags, and <code>materialSetOf(Material.STONE, Material.DIRT)</code> where a <code>MaterialSet</code> of materials is
+needed.</p>
+<p>The file lists:
+- Individual materials: <code>stone</code>, <code>diamond_ore</code>
+- Block and item tags: <code>'#shulker_boxes'</code>, <code>'#wool'</code>, <code>'#mineable/pickaxe'</code>. Quote them in YAML, because an unquoted
+  <code>#</code> starts a comment
+- Both with or without <code>minecraft:</code> prefix</p>
+<div class="highlight"><pre><span></span><code><span class="nt">diggable</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;#minecraft:sand&#39;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">minecraft:gravel</span>
+</code></pre></div>
+<p>A <code>MaterialSet</code> is an immutable <code>Set&lt;Material&gt;</code> that contains the listed materials and all values of the listed tags,
+and also remembers what was listed: <code>diggable.materials</code> and <code>diggable.tags</code>. Tags stay tags: saving writes them back
+as <code>'#...'</code> entries, not as the materials they contain. They are resolved each time the config is read (on startup and
+after <code>reloadConfig()</code>), so the set picks up blocks that new Minecraft versions or datapacks add to a tag.</p>
+<p>Like every other delegate, material lists take comments. Empty lists (<code>blocks: []</code>) read as an empty set. Unknown or
+legacy materials and unknown tags are skipped with a warning.</p>
+<p><code>+</code> and <code>-</code> return a new <code>MaterialSet</code> and keep its tags. Adding or removing another <code>MaterialSet</code> adds or removes its
+tags as well.</p>
+<div class="highlight"><pre><span></span><code><span class="n">config</span><span class="p">.</span><span class="na">diggable</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Material</span><span class="p">.</span><span class="na">CLAY</span><span class="w">       </span><span class="c1">// add a material</span>
+<span class="n">config</span><span class="p">.</span><span class="na">diggable</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Tag</span><span class="p">.</span><span class="na">DIRT</span><span class="w">            </span><span class="c1">// add a tag</span>
+<span class="n">config</span><span class="p">.</span><span class="na">diggable</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">Material</span><span class="p">.</span><span class="na">GRAVEL</span><span class="w">     </span><span class="c1">// remove a material</span>
+<span class="n">config</span><span class="p">.</span><span class="na">diggable</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">Tag</span><span class="p">.</span><span class="na">SAND</span><span class="w">            </span><span class="c1">// remove a tag</span>
+<span class="n">config</span><span class="p">.</span><span class="na">save</span><span class="p">()</span>
+</code></pre></div>
+<p>Removing a material that is not part of the set changes nothing. Removing a material that one of the set's tags
+includes throws an <code>IllegalArgumentException</code> because the result could not keep the tag, e.g.
+<code>RED_SAND is included by tag #minecraft:sand; remove the tag instead</code>. <code>diggable.tagsContaining(material)</code> returns the
+tags of the set that include a material.</p>
+<p>A <code>MaterialSet</code> equals every <code>Set&lt;Material&gt;</code> with the same materials; tags are not part of equality. Creating a
+<code>MaterialSet</code> with legacy materials throws an <code>IllegalArgumentException</code>.</p>
+<p>For a plain <code>List&lt;Material&gt;</code> without tags, give the type argument. It is stored like other enum lists (<code>stone</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">order</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Material</span><span class="o">&gt;</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="o">&lt;</span><span class="n">Material</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;order&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="n">Material</span><span class="p">.</span><span class="na">STONE</span><span class="p">,</span><span class="w"> </span><span class="n">Material</span><span class="p">.</span><span class="na">DIRT</span><span class="p">))</span>
+</code></pre></div>
 <h2 id="advanced-features">Advanced Features</h2>
 <h3 id="nested-configuration">Nested Configuration</h3>
 <p>Use inner classes for structured configuration:</p>
@@ -1136,12 +1209,12 @@
 <p>Results in YAML:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spring</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">start_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2024-01-01&quot;</span>
-<span class="w">  </span><span class="nt">end_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2024-12-31&quot;</span>
+<span class="w">  </span><span class="nt">start_date</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2024-01-01</span>
+<span class="w">  </span><span class="nt">end_date</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2024-12-31</span>
 <span class="nt">winter</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">start_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2024-01-01&quot;</span>
-<span class="w">  </span><span class="nt">end_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2024-12-31&quot;</span>
+<span class="w">  </span><span class="nt">start_date</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2024-01-01</span>
+<span class="w">  </span><span class="nt">end_date</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2024-12-31</span>
 </code></pre></div>
 <h3 id="comments">Comments</h3>
 <p>Add comments to config values:</p>
@@ -1152,14 +1225,26 @@
 <span class="w">    </span><span class="s">&quot;20 ticks = 1 second&quot;</span>
 <span class="p">)</span>
 </code></pre></div>
-<p>Comments are written during <code>saveDefaults()</code> if the path doesn't have existing comments.</p>
+<p>Comments are written during <code>saveDefaults()</code> if the path doesn't have existing comments. A comment containing line
+breaks is split into several lines.</p>
+<p>Comments written by server admins are kept when the file is saved: comments above keys, comments behind values,
+comments on list items, blank lines and comments at the end of the file. Comment lines at the very top of the file,
+separated from the first key by a blank line, are treated as the file header and stay at the top. Values that were not
+changed keep their quoting. Indentation is normalized: nested keys are indented by two spaces, and list items (<code>-</code>)
+start at the indentation of their key. Aliases are written as copies.</p>
 <h3 id="multiple-files">Multiple Files</h3>
-<p>Bind to arbitrary YAML files instead of the default <code>config.yml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">customConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">object</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nc">AbstractConfig</span><span class="p">(</span><span class="n">wrapConfig</span><span class="p">(</span><span class="n">dataFolder</span><span class="p">.</span><span class="na">resolve</span><span class="p">(</span><span class="s">&quot;custom.yml&quot;</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<p>Bind to arbitrary YAML files instead of the default <code>config.yml</code>. For a path, import the core
+<code>io.github.kraftlin.config.wrapConfig</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">io.github.kraftlin.config.wrapConfig</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="nv">customConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">object</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nc">AbstractConfig</span><span class="p">(</span><span class="n">wrapConfig</span><span class="p">(</span><span class="n">dataPath</span><span class="p">.</span><span class="na">resolve</span><span class="p">(</span><span class="s">&quot;custom.yml&quot;</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">value</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;value&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="n">customConfig</span><span class="p">.</span><span class="na">saveDefaults</span><span class="p">()</span>
 </code></pre></div>
+<p><code>dataPath</code> is the plugin's data folder as a <code>Path</code> (<code>dataFolder</code> is a <code>File</code>). In a file that also imports the Paper
+<code>wrapConfig(plugin)</code>, the call with a path is ambiguous; import the core function under another name there, e.g.
+<code>import io.github.kraftlin.config.wrapConfig as wrapConfigFile</code>.</p>
 <h3 id="redundant-key-removal">Redundant Key Removal</h3>
 <p>Clean up old/unused config keys:</p>
 <div class="highlight"><pre><span></span><code><span class="n">config</span><span class="p">.</span><span class="na">removeRedundantKeys</span><span class="p">()</span><span class="w">  </span><span class="c1">// Removes keys not defined in code</span>
@@ -1176,14 +1261,18 @@
 <p>Features:
 - Auto-migrates legacy <code>database.properties</code> files (the old file is deleted afterwards)
 - Creates example config if none exists
-- Includes helpful header comments</p>
+- Includes helpful header comments
+- All three keys <code>url</code>, <code>user</code> and <code>password</code> must be present. <code>user</code> and <code>password</code> may be empty, <code>~</code> or <code>null</code> (read
+  as empty, e.g. for SQLite); <code>url</code> must not be empty
+- Values are read as typed, so a password like <code>007007</code> stays <code>007007</code>; only <code>url</code> is trimmed</p>
 <p>Example <code>database.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc:postgresql://localhost:5432/mydb</span>
 <span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myuser</span>
 <span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mypassword</span>
 </code></pre></div>
 <h2 id="platform-setup">Platform Setup</h2>
-<p>Each platform provides a <code>wrapConfig</code> function to create the config wrapper:</p>
+<p>Each platform provides a function to create the config wrapper (<code>wrapConfig</code> on Paper and BungeeCord,
+<code>wrapPluginConfig</code> on Velocity):</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Paper</label><label for="__tabbed_1_2">BungeeCord</label><label for="__tabbed_1_3">Velocity</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1199,14 +1288,15 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">(</span><span class="n">dataDirectory</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AbstractConfig</span><span class="p">(</span><span class="n">wrapConfig</span><span class="p">(</span><span class="n">dataDirectory</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">(</span><span class="n">dataDirectory</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AbstractConfig</span><span class="p">(</span><span class="n">wrapPluginConfig</span><span class="p">(</span><span class="n">dataDirectory</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">value</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;key&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;default&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
+<p>Pass the plugin's injected <code>@DataDirectory</code> path.</p>
 </div>
 </div>
 </div>
-<p>The <code>wrapConfig</code> overloads accept platform-specific types but all return the same <code>ConfigWrapper</code>, so
+<p>The wrapper functions accept platform-specific types but all return the same <code>ConfigWrapper</code>, so
 everything else (property delegation, lifecycle, types) works identically across platforms.</p>
 <h2 id="why-kraftlin-config">Why Kraftlin Config?</h2>
 <p>Benefits over manual YAML access:</p>
@@ -1218,7 +1308,7 @@ everything else (property delegation, lifecycle, types) works identically across
 <p><strong>With Kraftlin:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">(</span><span class="n">plugin</span><span class="p">:</span><span class="w"> </span><span class="n">Plugin</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AbstractConfig</span><span class="p">(</span><span class="n">wrapConfig</span><span class="p">(</span><span class="n">plugin</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">interval</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;spawn_interval_ticks&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1200L</span><span class="p">)</span>
-<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">items</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;items&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">listOf</span><span class="p">())</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">items</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;items&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">listOf</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">())</span>
 <span class="p">}</span>
 <span class="c1">// Type-safe, organized, automatic defaults</span>
 </code></pre></div></p>
