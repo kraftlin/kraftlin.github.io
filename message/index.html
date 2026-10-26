@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -1411,8 +1411,8 @@
 <h2 id="getting-started">Getting Started</h2>
 <p>Build a simple message:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;World!&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Hello "</span><span class="p">)</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"World!"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GOLD</span><span class="p">)</span>
 <span class="w">        </span><span class="n">bold</span><span class="p">()</span>
 <span class="w">    </span><span class="p">}</span>
@@ -1420,10 +1420,10 @@
 </code></pre></div>
 <p>With Paper integration, send messages directly:</p>
 <div class="highlight"><pre><span></span><code><span class="n">player</span><span class="p">.</span><span class="na">message</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Click here&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Click here"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GREEN</span><span class="p">)</span>
-<span class="w">        </span><span class="n">runCommand</span><span class="p">(</span><span class="s">&quot;/help&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">&quot;Get help&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">runCommand</span><span class="p">(</span><span class="s">"/help"</span><span class="p">)</span>
+<span class="w">        </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">"Get help"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -1431,12 +1431,12 @@
 <h3 id="component-building">Component Building</h3>
 <p>Messages are built using nested DSL blocks:</p>
 <div class="highlight"><pre><span></span><code><span class="n">message</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Part 1&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Part 2&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Part 1"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Part 2"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">BLUE</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">newLine</span><span class="p">()</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Part 3&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Part 3"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="formatting-inheritance">Formatting Inheritance</h3>
@@ -1445,52 +1445,52 @@
 <span class="w">    </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">YELLOW</span><span class="p">)</span><span class="w">  </span><span class="c1">// Base color</span>
 <span class="w">    </span><span class="n">bold</span><span class="p">()</span><span class="w">                         </span><span class="c1">// Base decoration</span>
 
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Inherits yellow + bold&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Custom color&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Inherits yellow + bold"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Custom color"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GRAY</span><span class="p">)</span><span class="w">  </span><span class="c1">// Overrides base</span>
 <span class="w">        </span><span class="c1">// Still bold</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Back to yellow + bold&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Back to yellow + bold"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="interactive-components">Interactive Components</h3>
 <p>Add click and hover actions:</p>
 <div class="highlight"><pre><span></span><code><span class="n">message</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Execute command&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">runCommand</span><span class="p">(</span><span class="s">&quot;/say hello&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">&quot;Click to say hello&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Execute command"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">runCommand</span><span class="p">(</span><span class="s">"/say hello"</span><span class="p">)</span>
+<span class="w">        </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">"Click to say hello"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Open link&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">openUrl</span><span class="p">(</span><span class="s">&quot;https://example.com&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Open link"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">openUrl</span><span class="p">(</span><span class="s">"https://example.com"</span><span class="p">)</span>
 <span class="w">        </span><span class="n">underlined</span><span class="p">()</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="text-components">Text Components</h2>
 <h3 id="basic-text">Basic Text</h3>
-<div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">&quot;Simple text&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">"Simple text"</span><span class="p">)</span>
 
-<span class="n">text</span><span class="p">(</span><span class="s">&quot;Formatted text&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="n">text</span><span class="p">(</span><span class="s">"Formatted text"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">RED</span><span class="p">)</span>
 <span class="w">    </span><span class="n">bold</span><span class="p">()</span>
 <span class="w">    </span><span class="n">italic</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="color-shorthand">Color Shorthand</h3>
-<div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">&quot;Colored&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">BLUE</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">"Colored"</span><span class="p">,</span><span class="w"> </span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">BLUE</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="convenience-methods">Convenience Methods</h3>
 <div class="highlight"><pre><span></span><code><span class="n">message</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Line 1&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Line 1"</span><span class="p">)</span>
 <span class="w">    </span><span class="n">newLine</span><span class="p">()</span><span class="w">  </span><span class="c1">// Add line break</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Line 2&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Line 2"</span><span class="p">)</span>
 <span class="w">    </span><span class="n">space</span><span class="p">()</span><span class="w">    </span><span class="c1">// Add space</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;after space&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"after space"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="styling">Styling</h2>
 <h3 id="colors">Colors</h3>
-<div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">&quot;Text&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">"Text"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GOLD</span><span class="p">)</span>
 <span class="w">    </span><span class="c1">// or</span>
 <span class="w">    </span><span class="n">color</span><span class="p">(</span><span class="n">TextColor</span><span class="p">.</span><span class="na">color</span><span class="p">(</span><span class="m">0</span><span class="n">xFF5733</span><span class="p">))</span>
@@ -1498,7 +1498,7 @@
 </code></pre></div>
 <h3 id="decorations">Decorations</h3>
 <p>All standard text decorations are supported:</p>
-<div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">&quot;Formatted&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">"Formatted"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">bold</span><span class="p">()</span>
 <span class="w">    </span><span class="n">italic</span><span class="p">()</span>
 <span class="w">    </span><span class="n">underlined</span><span class="p">()</span>
@@ -1509,58 +1509,58 @@
 <h2 id="click-events">Click Events</h2>
 <p>Only one click action per component (mutually exclusive):</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Execute command as the clicking player</span>
-<span class="n">text</span><span class="p">(</span><span class="s">&quot;Execute&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">runCommand</span><span class="p">(</span><span class="s">&quot;/gamemode creative&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="n">text</span><span class="p">(</span><span class="s">"Execute"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">runCommand</span><span class="p">(</span><span class="s">"/gamemode creative"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 
-<span class="c1">// Insert command into chat bar (doesn&#39;t execute)</span>
-<span class="n">text</span><span class="p">(</span><span class="s">&quot;Suggest&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">suggestCommand</span><span class="p">(</span><span class="s">&quot;/msg &quot;</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="c1">// Insert command into chat bar (doesn't execute)</span>
+<span class="n">text</span><span class="p">(</span><span class="s">"Suggest"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">suggestCommand</span><span class="p">(</span><span class="s">"/msg "</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 
 <span class="c1">// Open URL dialog</span>
-<span class="n">text</span><span class="p">(</span><span class="s">&quot;Link&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">openUrl</span><span class="p">(</span><span class="s">&quot;https://example.com&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="n">text</span><span class="p">(</span><span class="s">"Link"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">openUrl</span><span class="p">(</span><span class="s">"https://example.com"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 
 <span class="c1">// Copy text to clipboard</span>
-<span class="n">text</span><span class="p">(</span><span class="s">&quot;Copy&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">copyToClipboard</span><span class="p">(</span><span class="s">&quot;Copied text&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="n">text</span><span class="p">(</span><span class="s">"Copy"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">copyToClipboard</span><span class="p">(</span><span class="s">"Copied text"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <h2 id="hover-events">Hover Events</h2>
 <p>Only one hover event per component:</p>
 <h3 id="simple-text-hover">Simple Text Hover</h3>
-<div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">&quot;Hover me&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">&quot;Simple tooltip&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">"Hover me"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">"Simple tooltip"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="formatted-hover">Formatted Hover</h3>
-<div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">&quot;Hover me&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">&quot;Tooltip text&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">"Hover me"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">"Tooltip text"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GOLD</span><span class="p">)</span>
 <span class="w">        </span><span class="n">bold</span><span class="p">()</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="multi-component-hover">Multi-Component Hover</h3>
-<div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">&quot;Hover me&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">"Hover me"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">hoverMessage</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Line 1&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GOLD</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="n">text</span><span class="p">(</span><span class="s">"Line 1"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GOLD</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 <span class="w">        </span><span class="n">newLine</span><span class="p">()</span>
-<span class="w">        </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Line 2&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GRAY</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="n">text</span><span class="p">(</span><span class="s">"Line 2"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GRAY</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="custom-hover-events">Custom Hover Events</h3>
-<div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">&quot;Item&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">"Item"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">hoverEvent</span><span class="p">(</span><span class="n">itemStack</span><span class="p">.</span><span class="na">asHoverEvent</span><span class="p">())</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="insertion">Insertion</h2>
 <p>Text inserted into chat on shift+click (can be combined with other actions):</p>
-<div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">&quot;Insert text&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">insert</span><span class="p">(</span><span class="s">&quot;This text is inserted&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">runCommand</span><span class="p">(</span><span class="s">&quot;/help&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// Can combine with click action</span>
+<div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">"Insert text"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">insert</span><span class="p">(</span><span class="s">"This text is inserted"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">runCommand</span><span class="p">(</span><span class="s">"/help"</span><span class="p">)</span><span class="w">  </span><span class="c1">// Can combine with click action</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="legacy-support">Legacy Support</h2>
 <h3 id="converting-legacy-text">Converting Legacy Text</h3>
 <p>Convert <code>§</code>-style formatted text to components:</p>
 <div class="highlight"><pre><span></span><code><span class="n">message</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">legacyText</span><span class="p">(</span><span class="s">&quot;§aGreen §bBlue §lbold&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">legacyText</span><span class="p">(</span><span class="s">"§aGreen §bBlue §lbold"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="converting-to-legacy">Converting to Legacy</h3>
@@ -1569,7 +1569,7 @@
 </code></pre></div>
 <h2 id="existing-components">Existing Components</h2>
 <p>Wrap existing Adventure components:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">existingComponent</span><span class="p">:</span><span class="w"> </span><span class="n">Component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Component</span><span class="p">.</span><span class="na">text</span><span class="p">(</span><span class="s">&quot;Existing&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">existingComponent</span><span class="p">:</span><span class="w"> </span><span class="n">Component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Component</span><span class="p">.</span><span class="na">text</span><span class="p">(</span><span class="s">"Existing"</span><span class="p">)</span>
 
 <span class="n">message</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="n">existingComponent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -1582,18 +1582,18 @@
 <p>The core module provides <code>Audience.message</code> extensions that work on any platform
 whose sender implements Adventure's <code>Audience</code> interface (Paper, Velocity, and any other):</p>
 <div class="highlight"><pre><span></span><code><span class="n">audience</span><span class="p">.</span><span class="na">message</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GREEN</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;World!&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Hello "</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GREEN</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"World!"</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="n">audience</span><span class="p">.</span><span class="na">message</span><span class="p">(</span><span class="s">&quot;Simple text&quot;</span><span class="p">)</span>
-<span class="n">audience</span><span class="p">.</span><span class="na">message</span><span class="p">(</span><span class="s">&quot;Colored text&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">BLUE</span><span class="p">)</span>
+<span class="n">audience</span><span class="p">.</span><span class="na">message</span><span class="p">(</span><span class="s">"Simple text"</span><span class="p">)</span>
+<span class="n">audience</span><span class="p">.</span><span class="na">message</span><span class="p">(</span><span class="s">"Colored text"</span><span class="p">,</span><span class="w"> </span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">BLUE</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="bungeecord">BungeeCord</h3>
 <p>BungeeCord does not implement <code>Audience</code>, so <code>kraftlin-message-bungee</code> provides
 <code>CommandSender.message</code> extensions that serialize via <code>BungeeComponentSerializer</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">sender</span><span class="p">.</span><span class="na">message</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Hello from BungeeCord!&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GOLD</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Hello from BungeeCord!"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GOLD</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="paper-legacy">Paper (Legacy)</h3>
@@ -1602,20 +1602,20 @@ Use <code>Audience.message</code> from the core module instead — Paper's <code
 <p>Extension functions on <code>CommandSender</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Build and send complex message</span>
 <span class="n">player</span><span class="p">.</span><span class="na">message</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GREEN</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;World!&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Hello "</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GREEN</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"World!"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">// Send simple text</span>
-<span class="n">player</span><span class="p">.</span><span class="na">message</span><span class="p">(</span><span class="s">&quot;Simple message&quot;</span><span class="p">)</span>
+<span class="n">player</span><span class="p">.</span><span class="na">message</span><span class="p">(</span><span class="s">"Simple message"</span><span class="p">)</span>
 
 <span class="c1">// Send colored text</span>
-<span class="n">player</span><span class="p">.</span><span class="na">message</span><span class="p">(</span><span class="s">&quot;Colored&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">BLUE</span><span class="p">)</span>
+<span class="n">player</span><span class="p">.</span><span class="na">message</span><span class="p">(</span><span class="s">"Colored"</span><span class="p">,</span><span class="w"> </span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">BLUE</span><span class="p">)</span>
 
 <span class="c1">// Send single component with formatting</span>
-<span class="n">player</span><span class="p">.</span><span class="na">message</span><span class="p">(</span><span class="s">&quot;Click me&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">runCommand</span><span class="p">(</span><span class="s">&quot;/help&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">&quot;Get help&quot;</span><span class="p">)</span>
+<span class="n">player</span><span class="p">.</span><span class="na">message</span><span class="p">(</span><span class="s">"Click me"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">runCommand</span><span class="p">(</span><span class="s">"/help"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">"Get help"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">// Send existing component</span>
@@ -1626,44 +1626,44 @@ Use <code>Audience.message</code> from the core module instead — Paper's <code
 <h2 id="advanced-examples">Advanced Examples</h2>
 <h3 id="command-feedback">Command Feedback</h3>
 <div class="highlight"><pre><span></span><code><span class="n">player</span><span class="p">.</span><span class="na">message</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Teleported to &quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GRAY</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;</span><span class="si">${</span><span class="n">target</span><span class="p">.</span><span class="na">name</span><span class="si">}</span><span class="s">&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Teleported to "</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GRAY</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"</span><span class="si">${</span><span class="n">target</span><span class="p">.</span><span class="na">name</span><span class="si">}</span><span class="s">"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GOLD</span><span class="p">)</span>
 <span class="w">        </span><span class="n">hoverMessage</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Location: &quot;</span><span class="p">)</span>
-<span class="w">            </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;</span><span class="si">${</span><span class="n">target</span><span class="p">.</span><span class="na">location</span><span class="p">.</span><span class="na">blockX</span><span class="si">}</span><span class="s">, </span><span class="si">${</span><span class="n">target</span><span class="p">.</span><span class="na">location</span><span class="p">.</span><span class="na">blockY</span><span class="si">}</span><span class="s">, </span><span class="si">${</span><span class="n">target</span><span class="p">.</span><span class="na">location</span><span class="p">.</span><span class="na">blockZ</span><span class="si">}</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">text</span><span class="p">(</span><span class="s">"Location: "</span><span class="p">)</span>
+<span class="w">            </span><span class="n">text</span><span class="p">(</span><span class="s">"</span><span class="si">${</span><span class="n">target</span><span class="p">.</span><span class="na">location</span><span class="p">.</span><span class="na">blockX</span><span class="si">}</span><span class="s">, </span><span class="si">${</span><span class="n">target</span><span class="p">.</span><span class="na">location</span><span class="p">.</span><span class="na">blockY</span><span class="si">}</span><span class="s">, </span><span class="si">${</span><span class="n">target</span><span class="p">.</span><span class="na">location</span><span class="p">.</span><span class="na">blockZ</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="interactive-menu">Interactive Menu</h3>
 <div class="highlight"><pre><span></span><code><span class="n">player</span><span class="p">.</span><span class="na">message</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;[Accept]&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"[Accept]"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GREEN</span><span class="p">)</span>
-<span class="w">        </span><span class="n">runCommand</span><span class="p">(</span><span class="s">&quot;/quest accept </span><span class="si">${</span><span class="n">questId</span><span class="si">}</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">&quot;Click to accept quest&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">runCommand</span><span class="p">(</span><span class="s">"/quest accept </span><span class="si">${</span><span class="n">questId</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="w">        </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">"Click to accept quest"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">space</span><span class="p">()</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;[Decline]&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"[Decline]"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">RED</span><span class="p">)</span>
-<span class="w">        </span><span class="n">runCommand</span><span class="p">(</span><span class="s">&quot;/quest decline </span><span class="si">${</span><span class="n">questId</span><span class="si">}</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">&quot;Click to decline quest&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">runCommand</span><span class="p">(</span><span class="s">"/quest decline </span><span class="si">${</span><span class="n">questId</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="w">        </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">"Click to decline quest"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="formatted-list">Formatted List</h3>
 <div class="highlight"><pre><span></span><code><span class="n">message</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GRAY</span><span class="p">)</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Players online:&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Players online:"</span><span class="p">)</span>
 <span class="w">    </span><span class="n">newLine</span><span class="p">()</span>
 
 <span class="w">    </span><span class="n">players</span><span class="p">.</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">player</span><span class="w"> </span><span class="o">-&gt;</span>
-<span class="w">        </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;• </span><span class="si">${</span><span class="n">player</span><span class="p">.</span><span class="na">name</span><span class="si">}</span><span class="s">&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">text</span><span class="p">(</span><span class="s">"• </span><span class="si">${</span><span class="n">player</span><span class="p">.</span><span class="na">name</span><span class="si">}</span><span class="s">"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">WHITE</span><span class="p">)</span>
 <span class="w">            </span><span class="n">hoverMessage</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Click to teleport&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="n">text</span><span class="p">(</span><span class="s">"Click to teleport"</span><span class="p">)</span>
 <span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="n">runCommand</span><span class="p">(</span><span class="s">&quot;/tp </span><span class="si">${</span><span class="n">player</span><span class="p">.</span><span class="na">name</span><span class="si">}</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">runCommand</span><span class="p">(</span><span class="s">"/tp </span><span class="si">${</span><span class="n">player</span><span class="p">.</span><span class="na">name</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="n">newLine</span><span class="p">()</span>
 <span class="w">    </span><span class="p">}</span>
@@ -1675,8 +1675,8 @@ Use <code>Audience.message</code> from the core module instead — Paper's <code
 <p><strong>Use formatting inheritance</strong> for consistent styling:
    <div class="highlight"><pre><span></span><code><span class="n">message</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GRAY</span><span class="p">)</span><span class="w">  </span><span class="c1">// Set base color once</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Part 1&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Part 2&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Part 1"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Part 2"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div></p>
 </li>
@@ -1688,8 +1688,8 @@ Use <code>Audience.message</code> from the core module instead — Paper's <code
 </li>
 <li>
 <p><strong>Use hover messages</strong> for additional context:
-   <div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">&quot;Hover for details&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">&quot;Additional information here&quot;</span><span class="p">)</span>
+   <div class="highlight"><pre><span></span><code><span class="n">text</span><span class="p">(</span><span class="s">"Hover for details"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">"Additional information here"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div></p>
 </li>
@@ -1701,18 +1701,18 @@ Use <code>Audience.message</code> from the core module instead — Paper's <code
 <p>Benefits over raw Adventure builders:</p>
 <p><strong>Without Kraftlin:</strong>
 <div class="highlight"><pre><span></span><code><span class="n">Component</span><span class="p">.</span><span class="na">text</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">content</span><span class="p">(</span><span class="s">&quot;Click me&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">content</span><span class="p">(</span><span class="s">"Click me"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="na">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GREEN</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">clickEvent</span><span class="p">(</span><span class="n">ClickEvent</span><span class="p">.</span><span class="na">runCommand</span><span class="p">(</span><span class="s">&quot;/help&quot;</span><span class="p">))</span>
-<span class="w">    </span><span class="p">.</span><span class="na">hoverEvent</span><span class="p">(</span><span class="n">HoverEvent</span><span class="p">.</span><span class="na">showText</span><span class="p">(</span><span class="n">Component</span><span class="p">.</span><span class="na">text</span><span class="p">(</span><span class="s">&quot;Help&quot;</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">.</span><span class="na">clickEvent</span><span class="p">(</span><span class="n">ClickEvent</span><span class="p">.</span><span class="na">runCommand</span><span class="p">(</span><span class="s">"/help"</span><span class="p">))</span>
+<span class="w">    </span><span class="p">.</span><span class="na">hoverEvent</span><span class="p">(</span><span class="n">HoverEvent</span><span class="p">.</span><span class="na">showText</span><span class="p">(</span><span class="n">Component</span><span class="p">.</span><span class="na">text</span><span class="p">(</span><span class="s">"Help"</span><span class="p">)))</span>
 <span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
 </code></pre></div></p>
 <p><strong>With Kraftlin:</strong>
 <div class="highlight"><pre><span></span><code><span class="n">message</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Click me&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Click me"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GREEN</span><span class="p">)</span>
-<span class="w">        </span><span class="n">runCommand</span><span class="p">(</span><span class="s">&quot;/help&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">&quot;Help&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">runCommand</span><span class="p">(</span><span class="s">"/help"</span><span class="p">)</span>
+<span class="w">        </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">"Help"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></p>
@@ -1780,10 +1780,10 @@ Use <code>Audience.message</code> from the core module instead — Paper's <code
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "content.tabs.link"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

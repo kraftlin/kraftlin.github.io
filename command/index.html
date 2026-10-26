@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -965,13 +965,13 @@
 <p>Brigadier is not pulled in transitively: Paper and Velocity both ship their own copy, and the library compiles against
 whichever one the platform provides. When using <code>kraftlin-command-core</code> on its own, add <code>com.mojang:brigadier</code> yourself.</p>
 <h2 id="getting-started">Getting Started</h2>
-<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kraftlinCommand</span><span class="p">(</span><span class="s">&quot;demo&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">requiresPermission</span><span class="p">(</span><span class="s">&quot;demo.use&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">player</span><span class="p">(</span><span class="s">&quot;target&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kraftlinCommand</span><span class="p">(</span><span class="s">"demo"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">requiresPermission</span><span class="p">(</span><span class="s">"demo.use"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">player</span><span class="p">(</span><span class="s">"target"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">executes</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">-&gt;</span>
-<span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">player</span><span class="p">(</span><span class="s">&quot;target&quot;</span><span class="p">)</span>
-<span class="w">            </span><span class="n">sender</span><span class="p">.</span><span class="na">sendMessage</span><span class="p">(</span><span class="s">&quot;Sent hello to </span><span class="si">${</span><span class="n">target</span><span class="p">.</span><span class="na">name</span><span class="si">}</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="w">            </span><span class="n">target</span><span class="p">.</span><span class="na">sendMessage</span><span class="p">(</span><span class="s">&quot;Hello!&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">player</span><span class="p">(</span><span class="s">"target"</span><span class="p">)</span>
+<span class="w">            </span><span class="n">sender</span><span class="p">.</span><span class="na">sendMessage</span><span class="p">(</span><span class="s">"Sent hello to </span><span class="si">${</span><span class="n">target</span><span class="p">.</span><span class="na">name</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="w">            </span><span class="n">target</span><span class="p">.</span><span class="na">sendMessage</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -984,17 +984,17 @@ whichever one the platform provides. When using <code>kraftlin-command-core</cod
 <h2 id="core-concepts">Core Concepts</h2>
 <h3 id="command-structure">Command Structure</h3>
 <p>Commands are built using nested DSL blocks:</p>
-<div class="highlight"><pre><span></span><code><span class="n">kraftlinCommand</span><span class="p">(</span><span class="s">&quot;mycommand&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">kraftlinCommand</span><span class="p">(</span><span class="s">"mycommand"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Literal sub-commands</span>
-<span class="w">    </span><span class="n">literal</span><span class="p">(</span><span class="s">&quot;info&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">literal</span><span class="p">(</span><span class="s">"info"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">executes</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// Typed arguments</span>
-<span class="w">    </span><span class="n">integer</span><span class="p">(</span><span class="s">&quot;amount&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">integer</span><span class="p">(</span><span class="s">"amount"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">executes</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="o">-&gt;</span>
-<span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="p">.</span><span class="na">integer</span><span class="p">(</span><span class="s">&quot;amount&quot;</span><span class="p">)</span>
-<span class="w">            </span><span class="n">sender</span><span class="p">.</span><span class="na">sendMessage</span><span class="p">(</span><span class="s">&quot;Amount: </span><span class="si">$</span><span class="n">amount</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="p">.</span><span class="na">integer</span><span class="p">(</span><span class="s">"amount"</span><span class="p">)</span>
+<span class="w">            </span><span class="n">sender</span><span class="p">.</span><span class="na">sendMessage</span><span class="p">(</span><span class="s">"Amount: </span><span class="si">$</span><span class="n">amount</span><span class="s">"</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -1004,10 +1004,10 @@ whichever one the platform provides. When using <code>kraftlin-command-core</cod
 1. <strong>Builder function</strong>: Adds the argument to the command tree
 2. <strong>Accessor function</strong>: Retrieves the typed value from context</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Builder - adds argument node</span>
-<span class="n">player</span><span class="p">(</span><span class="s">&quot;target&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="n">player</span><span class="p">(</span><span class="s">"target"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">executes</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="o">-&gt;</span>
 <span class="w">        </span><span class="c1">// Accessor - retrieves typed Player</span>
-<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="p">.</span><span class="na">player</span><span class="p">(</span><span class="s">&quot;target&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="p">.</span><span class="na">player</span><span class="p">(</span><span class="s">"target"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -1025,8 +1025,8 @@ whichever one the platform provides. When using <code>kraftlin-command-core</cod
 </code></pre></div>
 <h3 id="requirements">Requirements</h3>
 <p>Requirements can be chained and are AND-ed together:</p>
-<div class="highlight"><pre><span></span><code><span class="n">kraftlinCommand</span><span class="p">(</span><span class="s">&quot;admin&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">requiresPermission</span><span class="p">(</span><span class="s">&quot;admin.use&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">kraftlinCommand</span><span class="p">(</span><span class="s">"admin"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">requiresPermission</span><span class="p">(</span><span class="s">"admin.use"</span><span class="p">)</span>
 <span class="w">    </span><span class="n">requiresPlayer</span><span class="p">()</span>
 <span class="w">    </span><span class="n">requires</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* custom check */</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="c1">// All must pass</span>
@@ -1078,51 +1078,51 @@ whichever one the platform provides. When using <code>kraftlin-command-core</cod
 <p>See KDoc for the complete list.</p>
 <h2 id="advanced-features">Advanced Features</h2>
 <h3 id="suggestions">Suggestions</h3>
-<div class="highlight"><pre><span></span><code><span class="n">word</span><span class="p">(</span><span class="s">&quot;option&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">suggestsStatic</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;baz&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">word</span><span class="p">(</span><span class="s">"option"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">suggestsStatic</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span><span class="w"> </span><span class="s">"bar"</span><span class="p">,</span><span class="w"> </span><span class="s">"baz"</span><span class="p">)</span>
 <span class="w">    </span><span class="n">executes</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// Custom suggestions</span>
-<span class="n">word</span><span class="p">(</span><span class="s">&quot;dynamic&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="n">word</span><span class="p">(</span><span class="s">"dynamic"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">suggests</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">builder</span><span class="w"> </span><span class="o">-&gt;</span>
-<span class="w">        </span><span class="n">listOf</span><span class="p">(</span><span class="s">&quot;option1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;option2&quot;</span><span class="p">).</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">builder</span><span class="p">.</span><span class="na">suggest</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="n">listOf</span><span class="p">(</span><span class="s">"option1"</span><span class="p">,</span><span class="w"> </span><span class="s">"option2"</span><span class="p">).</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">builder</span><span class="p">.</span><span class="na">suggest</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 <span class="w">        </span><span class="n">builder</span><span class="p">.</span><span class="na">buildFuture</span><span class="p">()</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="aliases">Aliases</h3>
-<div class="highlight"><pre><span></span><code><span class="n">literal</span><span class="p">(</span><span class="s">&quot;info&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;i&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;information&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">literal</span><span class="p">(</span><span class="s">"info"</span><span class="p">,</span><span class="w"> </span><span class="s">"i"</span><span class="p">,</span><span class="w"> </span><span class="s">"information"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">executes</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// Override existing commands (use carefully)</span>
-<span class="n">kraftlinCommand</span><span class="p">(</span><span class="s">&quot;help&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">overrideAliases</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="n">kraftlinCommand</span><span class="p">(</span><span class="s">"help"</span><span class="p">,</span><span class="w"> </span><span class="n">overrideAliases</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="custom-argument-types">Custom Argument Types</h3>
 <p>Use <code>choice()</code> for custom validated strings:</p>
-<div class="highlight"><pre><span></span><code><span class="n">choice</span><span class="p">(</span><span class="s">&quot;difficulty&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">&quot;easy&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;normal&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hard&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">choice</span><span class="p">(</span><span class="s">"difficulty"</span><span class="p">,</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">"easy"</span><span class="p">,</span><span class="w"> </span><span class="s">"normal"</span><span class="p">,</span><span class="w"> </span><span class="s">"hard"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">executes</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="o">-&gt;</span>
-<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">difficulty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="p">.</span><span class="na">choice</span><span class="p">(</span><span class="s">&quot;difficulty&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">difficulty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="p">.</span><span class="na">choice</span><span class="p">(</span><span class="s">"difficulty"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Use <code>enum()</code> for enum-backed arguments:</p>
-<div class="highlight"><pre><span></span><code><span class="n">enum</span><span class="o">&lt;</span><span class="n">GameMode</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;mode&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">enum</span><span class="o">&lt;</span><span class="n">GameMode</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"mode"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">executes</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="o">-&gt;</span>
-<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="p">.</span><span class="na">enum</span><span class="o">&lt;</span><span class="n">GameMode</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;mode&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="p">.</span><span class="na">enum</span><span class="o">&lt;</span><span class="n">GameMode</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"mode"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="velocity">Velocity</h2>
 <p>The Velocity module provides the same DSL structure with Velocity's <code>CommandSource</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kraftlinCommand</span><span class="p">(</span><span class="s">&quot;demo&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Demo command&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">requiresPermission</span><span class="p">(</span><span class="s">&quot;demo.use&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">string</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kraftlinCommand</span><span class="p">(</span><span class="s">"demo"</span><span class="p">,</span><span class="w"> </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Demo command"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">requiresPermission</span><span class="p">(</span><span class="s">"demo.use"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">string</span><span class="p">(</span><span class="s">"name"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">executes</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">-&gt;</span>
-<span class="w">            </span><span class="n">sender</span><span class="p">.</span><span class="na">sendMessage</span><span class="p">(</span><span class="n">Component</span><span class="p">.</span><span class="na">text</span><span class="p">(</span><span class="s">&quot;Hello, </span><span class="si">${</span><span class="n">context</span><span class="p">.</span><span class="na">string</span><span class="p">(</span><span class="s">&quot;</span><span class="n">name</span><span class="s">&quot;</span><span class="p">)</span><span class="si">}</span><span class="s">!&quot;</span><span class="p">))</span>
+<span class="w">            </span><span class="n">sender</span><span class="p">.</span><span class="na">sendMessage</span><span class="p">(</span><span class="n">Component</span><span class="p">.</span><span class="na">text</span><span class="p">(</span><span class="s">"Hello, </span><span class="si">${</span><span class="n">context</span><span class="p">.</span><span class="na">string</span><span class="p">(</span><span class="s">"</span><span class="n">name</span><span class="s">"</span><span class="p">)</span><span class="si">}</span><span class="s">!"</span><span class="p">))</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -1138,18 +1138,18 @@ whichever one the platform provides. When using <code>kraftlin-command-core</cod
 <h2 id="why-kraftlin-commands">Why Kraftlin Commands?</h2>
 <p>Kraftlin removes boilerplate and type-unsafe patterns from Brigadier:</p>
 <p><strong>Without Kraftlin:</strong>
-<div class="highlight"><pre><span></span><code><span class="n">Commands</span><span class="p">.</span><span class="na">argument</span><span class="p">(</span><span class="s">&quot;target&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ArgumentTypes</span><span class="p">.</span><span class="na">player</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><code><span class="n">Commands</span><span class="p">.</span><span class="na">argument</span><span class="p">(</span><span class="s">"target"</span><span class="p">,</span><span class="w"> </span><span class="n">ArgumentTypes</span><span class="p">.</span><span class="na">player</span><span class="p">())</span>
 <span class="w">    </span><span class="p">.</span><span class="na">executes</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">-&gt;</span>
 <span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">source</span>
-<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">resolver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">getArgument</span><span class="p">(</span><span class="s">&quot;target&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">PlayerSelectorArgumentResolver</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">resolver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">getArgument</span><span class="p">(</span><span class="s">"target"</span><span class="p">,</span><span class="w"> </span><span class="n">PlayerSelectorArgumentResolver</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">)</span>
 <span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">resolver</span><span class="p">.</span><span class="na">resolve</span><span class="p">(</span><span class="n">source</span><span class="p">).</span><span class="na">first</span><span class="p">()</span>
 <span class="w">        </span><span class="c1">// ...</span>
 <span class="w">    </span><span class="p">}</span>
 </code></pre></div></p>
 <p><strong>With Kraftlin:</strong>
-<div class="highlight"><pre><span></span><code><span class="n">player</span><span class="p">(</span><span class="s">&quot;target&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">player</span><span class="p">(</span><span class="s">"target"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">executes</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">-&gt;</span>
-<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">player</span><span class="p">(</span><span class="s">&quot;target&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">player</span><span class="p">(</span><span class="s">"target"</span><span class="p">)</span>
 <span class="w">        </span><span class="c1">// ...</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -1217,10 +1217,10 @@ whichever one the platform provides. When using <code>kraftlin-command-core</cod
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "content.tabs.link"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

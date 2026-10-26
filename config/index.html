@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -1057,9 +1057,9 @@
 <h2 id="getting-started">Getting Started</h2>
 <p>Create a config class extending <code>AbstractConfig</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">(</span><span class="n">plugin</span><span class="p">:</span><span class="w"> </span><span class="n">Plugin</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AbstractConfig</span><span class="p">(</span><span class="n">wrapConfig</span><span class="p">(</span><span class="n">plugin</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">interval</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;spawn_interval_ticks&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1200L</span><span class="p">)</span>
-<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">chance</span><span class="p">:</span><span class="w"> </span><span class="kt">Double</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;spawn_chance&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">0.25</span><span class="p">)</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">message</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;message&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello!&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">interval</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">"spawn_interval_ticks"</span><span class="p">,</span><span class="w"> </span><span class="m">1200L</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">chance</span><span class="p">:</span><span class="w"> </span><span class="kt">Double</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">"spawn_chance"</span><span class="p">,</span><span class="w"> </span><span class="m">0.25</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">message</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">"message"</span><span class="p">,</span><span class="w"> </span><span class="s">"Hello!"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Use in your plugin:</p>
@@ -1067,22 +1067,22 @@
 <span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Config</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
 <span class="w">    </span><span class="n">config</span><span class="p">.</span><span class="na">saveDefaults</span><span class="p">()</span><span class="w">  </span><span class="c1">// Write defaults if not present</span>
 
-<span class="w">    </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;Interval: </span><span class="si">${</span><span class="n">config</span><span class="p">.</span><span class="na">interval</span><span class="si">}</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">config</span><span class="p">.</span><span class="na">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Updated!&quot;</span>
+<span class="w">    </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">"Interval: </span><span class="si">${</span><span class="n">config</span><span class="p">.</span><span class="na">interval</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">config</span><span class="p">.</span><span class="na">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Updated!"</span>
 <span class="w">    </span><span class="n">config</span><span class="p">.</span><span class="na">save</span><span class="p">()</span><span class="w">  </span><span class="c1">// Persist changes</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="core-concepts">Core Concepts</h2>
 <h3 id="property-delegation">Property Delegation</h3>
 <p>Configuration values are bound to Kotlin properties using delegation:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">readOnly</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;path.to.value&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;default&quot;</span><span class="p">)</span>
-<span class="kd">var</span><span class="w"> </span><span class="nv">mutable</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;path&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">42</span><span class="p">)</span><span class="w">  </span><span class="c1">// Can be changed and saved</span>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">readOnly</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">"path.to.value"</span><span class="p">,</span><span class="w"> </span><span class="s">"default"</span><span class="p">)</span>
+<span class="kd">var</span><span class="w"> </span><span class="nv">mutable</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">"path"</span><span class="p">,</span><span class="w"> </span><span class="m">42</span><span class="p">)</span><span class="w">  </span><span class="c1">// Can be changed and saved</span>
 </code></pre></div>
 <h3 id="type-safety">Type Safety</h3>
 <p>The module provides compile-time type checking for all config values:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">count</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;count&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w">          </span><span class="c1">// ✓ Int</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">items</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;items&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">))</span><span class="w">  </span><span class="c1">// ✓ List&lt;String&gt;</span>
-<span class="c1">// val wrong: Int by config(&quot;count&quot;, &quot;text&quot;)   // ✗ Compile error</span>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">count</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">"count"</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w">          </span><span class="c1">// ✓ Int</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">items</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">"items"</span><span class="p">,</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span><span class="w"> </span><span class="s">"b"</span><span class="p">))</span><span class="w">  </span><span class="c1">// ✓ List&lt;String&gt;</span>
+<span class="c1">// val wrong: Int by config("count", "text")   // ✗ Compile error</span>
 </code></pre></div>
 <h3 id="lifecycle">Lifecycle</h3>
 <div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Config</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
@@ -1094,7 +1094,7 @@
 <span class="n">config</span><span class="p">.</span><span class="na">reloadConfig</span><span class="p">()</span><span class="w">  </span><span class="c1">// Reload from disk, invalidate cache</span>
 
 <span class="c1">// After programmatic changes</span>
-<span class="n">config</span><span class="p">.</span><span class="na">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;New value&quot;</span>
+<span class="n">config</span><span class="p">.</span><span class="na">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"New value"</span>
 <span class="n">config</span><span class="p">.</span><span class="na">save</span><span class="p">()</span><span class="w">  </span><span class="c1">// Write back to disk</span>
 </code></pre></div>
 <h2 id="supported-types">Supported Types</h2>
@@ -1124,7 +1124,7 @@ failed reload the previous values stay active.</p>
 <h3 id="custom-types">Custom Types</h3>
 <p>Use <code>serialize</code> and <code>deserialize</code> functions for custom types:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">customValue</span><span class="p">:</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span>
-<span class="w">    </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;date&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"date"</span><span class="p">,</span>
 <span class="w">    </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">now</span><span class="p">(),</span>
 <span class="w">    </span><span class="n">serialize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">toString</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
 <span class="w">    </span><span class="n">deserialize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
@@ -1132,7 +1132,7 @@ failed reload the previous values stay active.</p>
 </code></pre></div>
 <p>Works with lists too. Give the lambda parameters explicit types there, so the list overload can be chosen:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">dates</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">LocalDateTime</span><span class="o">&gt;</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span>
-<span class="w">    </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;dates&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"dates"</span><span class="p">,</span>
 <span class="w">    </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">now</span><span class="p">()),</span>
 <span class="w">    </span><span class="n">serialize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">date</span><span class="p">:</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">date</span><span class="p">.</span><span class="na">toString</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
 <span class="w">    </span><span class="n">deserialize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
@@ -1144,16 +1144,16 @@ failed reload the previous values stay active.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">BukkitConfig</span><span class="p">(</span><span class="n">plugin</span><span class="p">:</span><span class="w"> </span><span class="n">Plugin</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AbstractBukkitConfig</span><span class="p">(</span><span class="n">wrapConfig</span><span class="p">(</span><span class="n">plugin</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Materials</span>
 <span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">breakable</span><span class="p">:</span><span class="w"> </span><span class="n">MaterialSet</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;breakable&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"breakable"</span><span class="p">,</span>
 <span class="w">        </span><span class="n">listOf</span><span class="p">(</span><span class="n">Material</span><span class="p">.</span><span class="na">STONE</span><span class="p">,</span><span class="w"> </span><span class="n">Material</span><span class="p">.</span><span class="na">DIRT</span><span class="p">),</span>
-<span class="w">        </span><span class="s">&quot;Blocks that may be broken&quot;</span>
+<span class="w">        </span><span class="s">"Blocks that may be broken"</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// Materials and tags</span>
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">diggable</span><span class="p">:</span><span class="w"> </span><span class="n">MaterialSet</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;diggable&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"diggable"</span><span class="p">,</span>
 <span class="w">        </span><span class="n">MaterialSet</span><span class="p">(</span><span class="n">listOf</span><span class="p">(</span><span class="n">Material</span><span class="p">.</span><span class="na">GRAVEL</span><span class="p">),</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="n">Tag</span><span class="p">.</span><span class="na">SAND</span><span class="p">)),</span>
-<span class="w">        </span><span class="s">&quot;Blocks the pet may dig&quot;</span>
+<span class="w">        </span><span class="s">"Blocks the pet may dig"</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -1166,7 +1166,7 @@ needed.</p>
   <code>#</code> starts a comment
 - Both with or without <code>minecraft:</code> prefix</p>
 <div class="highlight"><pre><span></span><code><span class="nt">diggable</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;#minecraft:sand&#39;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'#minecraft:sand'</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">minecraft:gravel</span>
 </code></pre></div>
 <p>A <code>MaterialSet</code> is an immutable <code>Set&lt;Material&gt;</code> that contains the listed materials and all values of the listed tags,
@@ -1190,19 +1190,19 @@ tags of the set that include a material.</p>
 <p>A <code>MaterialSet</code> equals every <code>Set&lt;Material&gt;</code> with the same materials; tags are not part of equality. Creating a
 <code>MaterialSet</code> with legacy materials throws an <code>IllegalArgumentException</code>.</p>
 <p>For a plain <code>List&lt;Material&gt;</code> without tags, give the type argument. It is stored like other enum lists (<code>stone</code>):</p>
-<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">order</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Material</span><span class="o">&gt;</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="o">&lt;</span><span class="n">Material</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;order&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="n">Material</span><span class="p">.</span><span class="na">STONE</span><span class="p">,</span><span class="w"> </span><span class="n">Material</span><span class="p">.</span><span class="na">DIRT</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">order</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Material</span><span class="o">&gt;</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="o">&lt;</span><span class="n">Material</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"order"</span><span class="p">,</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="n">Material</span><span class="p">.</span><span class="na">STONE</span><span class="p">,</span><span class="w"> </span><span class="n">Material</span><span class="p">.</span><span class="na">DIRT</span><span class="p">))</span>
 </code></pre></div>
 <h2 id="advanced-features">Advanced Features</h2>
 <h3 id="nested-configuration">Nested Configuration</h3>
 <p>Use inner classes for structured configuration:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">(</span><span class="n">plugin</span><span class="p">:</span><span class="w"> </span><span class="n">Plugin</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AbstractConfig</span><span class="p">(</span><span class="n">wrapConfig</span><span class="p">(</span><span class="n">plugin</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">spring</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EventConfig</span><span class="p">(</span><span class="s">&quot;spring&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">winter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EventConfig</span><span class="p">(</span><span class="s">&quot;winter&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">spring</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EventConfig</span><span class="p">(</span><span class="s">"spring"</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">winter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EventConfig</span><span class="p">(</span><span class="s">"winter"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="kd">inner</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">EventConfig</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">enabled</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">id</span><span class="s">.enabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
-<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">startDate</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">id</span><span class="s">.start_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;2024-01-01&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">endDate</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">id</span><span class="s">.end_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;2024-12-31&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">enabled</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">"</span><span class="si">$</span><span class="n">id</span><span class="s">.enabled"</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">startDate</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">"</span><span class="si">$</span><span class="n">id</span><span class="s">.start_date"</span><span class="p">,</span><span class="w"> </span><span class="s">"2024-01-01"</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">endDate</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">"</span><span class="si">$</span><span class="n">id</span><span class="s">.end_date"</span><span class="p">,</span><span class="w"> </span><span class="s">"2024-12-31"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -1219,10 +1219,10 @@ tags of the set that include a material.</p>
 <h3 id="comments">Comments</h3>
 <p>Add comments to config values:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">interval</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;spawn_interval_ticks&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"spawn_interval_ticks"</span><span class="p">,</span>
 <span class="w">    </span><span class="m">1200L</span><span class="p">,</span>
-<span class="w">    </span><span class="s">&quot;Time in ticks between spawns&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s">&quot;20 ticks = 1 second&quot;</span>
+<span class="w">    </span><span class="s">"Time in ticks between spawns"</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"20 ticks = 1 second"</span>
 <span class="p">)</span>
 </code></pre></div>
 <p>Comments are written during <code>saveDefaults()</code> if the path doesn't have existing comments. A comment containing line
@@ -1237,8 +1237,8 @@ start at the indentation of their key. Aliases are written as copies.</p>
 <code>io.github.kraftlin.config.wrapConfig</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">io.github.kraftlin.config.wrapConfig</span>
 
-<span class="kd">val</span><span class="w"> </span><span class="nv">customConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">object</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nc">AbstractConfig</span><span class="p">(</span><span class="n">wrapConfig</span><span class="p">(</span><span class="n">dataPath</span><span class="p">.</span><span class="na">resolve</span><span class="p">(</span><span class="s">&quot;custom.yml&quot;</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">value</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;value&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">customConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">object</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nc">AbstractConfig</span><span class="p">(</span><span class="n">wrapConfig</span><span class="p">(</span><span class="n">dataPath</span><span class="p">.</span><span class="na">resolve</span><span class="p">(</span><span class="s">"custom.yml"</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">value</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">"value"</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="n">customConfig</span><span class="p">.</span><span class="na">saveDefaults</span><span class="p">()</span>
 </code></pre></div>
@@ -1277,19 +1277,19 @@ start at the indentation of their key. Aliases are written as copies.</p>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">(</span><span class="n">plugin</span><span class="p">:</span><span class="w"> </span><span class="n">Plugin</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AbstractConfig</span><span class="p">(</span><span class="n">wrapConfig</span><span class="p">(</span><span class="n">plugin</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">value</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;key&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;default&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">value</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span><span class="w"> </span><span class="s">"default"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">(</span><span class="n">plugin</span><span class="p">:</span><span class="w"> </span><span class="n">Plugin</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AbstractConfig</span><span class="p">(</span><span class="n">wrapConfig</span><span class="p">(</span><span class="n">plugin</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">value</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;key&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;default&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">value</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span><span class="w"> </span><span class="s">"default"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">(</span><span class="n">dataDirectory</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AbstractConfig</span><span class="p">(</span><span class="n">wrapPluginConfig</span><span class="p">(</span><span class="n">dataDirectory</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">value</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;key&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;default&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">value</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span><span class="w"> </span><span class="s">"default"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Pass the plugin's injected <code>@DataDirectory</code> path.</p>
@@ -1301,14 +1301,14 @@ everything else (property delegation, lifecycle, types) works identically across
 <h2 id="why-kraftlin-config">Why Kraftlin Config?</h2>
 <p>Benefits over manual YAML access:</p>
 <p><strong>Without Kraftlin:</strong>
-<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="na">getLong</span><span class="p">(</span><span class="s">&quot;spawn_interval_ticks&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1200L</span><span class="p">)</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="na">getStringList</span><span class="p">(</span><span class="s">&quot;items&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="na">getLong</span><span class="p">(</span><span class="s">"spawn_interval_ticks"</span><span class="p">,</span><span class="w"> </span><span class="m">1200L</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="na">getStringList</span><span class="p">(</span><span class="s">"items"</span><span class="p">)</span>
 <span class="c1">// Manual type checking, scattered get/set calls</span>
 </code></pre></div></p>
 <p><strong>With Kraftlin:</strong>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">(</span><span class="n">plugin</span><span class="p">:</span><span class="w"> </span><span class="n">Plugin</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AbstractConfig</span><span class="p">(</span><span class="n">wrapConfig</span><span class="p">(</span><span class="n">plugin</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">interval</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;spawn_interval_ticks&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1200L</span><span class="p">)</span>
-<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">items</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;items&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">listOf</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">())</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">interval</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">"spawn_interval_ticks"</span><span class="p">,</span><span class="w"> </span><span class="m">1200L</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">items</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">"items"</span><span class="p">,</span><span class="w"> </span><span class="n">listOf</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">())</span>
 <span class="p">}</span>
 <span class="c1">// Type-safe, organized, automatic defaults</span>
 </code></pre></div></p>
@@ -1376,10 +1376,10 @@ everything else (property delegation, lifecycle, types) works identically across
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "content.tabs.link"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

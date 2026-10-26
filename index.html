@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -865,10 +865,10 @@
 <span class="p">}</span>
 
 <span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="n">platform</span><span class="p">(</span><span class="s">&quot;io.github.kraftlin:kraftlin-bom:</span><span class="si">${</span><span class="n">kraftlinVersion</span><span class="si">}</span><span class="s">&quot;</span><span class="p">))</span>
-<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kraftlin:kraftlin-command-paper&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kraftlin:kraftlin-config-paper&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kraftlin:kraftlin-message-core&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="n">platform</span><span class="p">(</span><span class="s">"io.github.kraftlin:kraftlin-bom:</span><span class="si">${</span><span class="n">kraftlinVersion</span><span class="si">}</span><span class="s">"</span><span class="p">))</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">"io.github.kraftlin:kraftlin-command-paper"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">"io.github.kraftlin:kraftlin-config-paper"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">"io.github.kraftlin:kraftlin-message-core"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Replace the artifact IDs depending on the modules and platform you need.</p>
@@ -899,12 +899,12 @@
 </tbody>
 </table>
 <p><strong>Quick example:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kraftlinCommand</span><span class="p">(</span><span class="s">&quot;demo&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">requiresPermission</span><span class="p">(</span><span class="s">&quot;demo.use&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">player</span><span class="p">(</span><span class="s">&quot;target&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kraftlinCommand</span><span class="p">(</span><span class="s">"demo"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">requiresPermission</span><span class="p">(</span><span class="s">"demo.use"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">player</span><span class="p">(</span><span class="s">"target"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">executes</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">-&gt;</span>
-<span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">player</span><span class="p">(</span><span class="s">&quot;target&quot;</span><span class="p">)</span>
-<span class="w">            </span><span class="n">target</span><span class="p">.</span><span class="na">sendMessage</span><span class="p">(</span><span class="s">&quot;Hello!&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">player</span><span class="p">(</span><span class="s">"target"</span><span class="p">)</span>
+<span class="w">            </span><span class="n">target</span><span class="p">.</span><span class="na">sendMessage</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -940,14 +940,14 @@
 </table>
 <p><strong>Quick example:</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">(</span><span class="n">plugin</span><span class="p">:</span><span class="w"> </span><span class="n">Plugin</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AbstractConfig</span><span class="p">(</span><span class="n">wrapConfig</span><span class="p">(</span><span class="n">plugin</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">interval</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;spawn_interval_ticks&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1200L</span><span class="p">)</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">message</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">&quot;message&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello!&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">interval</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">"spawn_interval_ticks"</span><span class="p">,</span><span class="w"> </span><span class="m">1200L</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">message</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">config</span><span class="p">(</span><span class="s">"message"</span><span class="p">,</span><span class="w"> </span><span class="s">"Hello!"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">// Usage</span>
 <span class="kd">val</span><span class="w"> </span><span class="nv">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Config</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
 <span class="n">config</span><span class="p">.</span><span class="na">saveDefaults</span><span class="p">()</span>
-<span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;Interval: </span><span class="si">${</span><span class="n">config</span><span class="p">.</span><span class="na">interval</span><span class="si">}</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">"Interval: </span><span class="si">${</span><span class="n">config</span><span class="p">.</span><span class="na">interval</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
 </code></pre></div>
 <p><a href="config/">Learn more →</a></p>
 <h3 id="message">Message</h3>
@@ -980,10 +980,10 @@
 </table>
 <p><strong>Quick example:</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">player</span><span class="p">.</span><span class="na">message</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">&quot;Click here&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">text</span><span class="p">(</span><span class="s">"Click here"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">color</span><span class="p">(</span><span class="n">NamedTextColor</span><span class="p">.</span><span class="na">GREEN</span><span class="p">)</span>
-<span class="w">        </span><span class="n">runCommand</span><span class="p">(</span><span class="s">&quot;/help&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">&quot;Get help&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">runCommand</span><span class="p">(</span><span class="s">"/help"</span><span class="p">)</span>
+<span class="w">        </span><span class="n">hoverMessage</span><span class="p">(</span><span class="s">"Get help"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -1117,10 +1117,10 @@ Minor versions may contain breaking changes while the APIs are expanded and refi
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "content.tabs.link"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "content.tabs.link"], "search": "assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>
